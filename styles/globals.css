@@ -39,3 +39,6 @@ a {
     color-scheme: dark;
   }
 }
+.container {
+  padding: 10px 100px;
+}
