@@ -13,3 +13,11 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 ## Deploy on Vercel
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+To make this work, add an env file with all variables below
+
+AUTH0_SECRET=""
+AUTH0_BASE_URL='http://localhost:3000'
+AUTH0_ISSUER_BASE_URL=''
+AUTH0_CLIENT_ID=""
+AUTH0_CLIENT_SECRET=""
