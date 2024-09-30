@@ -15,17 +15,6 @@
   gap: 64px;
 }
 
-@media (prefers-color-scheme: dark) {
-  .page {
-    --gray-rgb: 255, 255, 255;
-    --gray-alpha-200: rgba(var(--gray-rgb), 0.145);
-    --gray-alpha-100: rgba(var(--gray-rgb), 0.06);
-
-    --button-primary-hover: #ccc;
-    --button-secondary-hover: #1a1a1a;
-  }
-}
-
 .main {
   display: flex;
   flex-direction: column;
@@ -153,5 +142,27 @@ a.secondary {
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+  }
+}
+
+.form {
+  .formGroup {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    width: 300px;
+    label {
+      margin-bottom: 0.5rem;
+    }
+    input {
+      padding: 10px;
+      font-family: inherit;
+    }
+  }
+  button {
+    min-width: 100px;
+    padding: 10px;
+    font-family: inherit;
+    cursor: pointer;
   }
 }

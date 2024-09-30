@@ -1,12 +1,24 @@
 import Head from "next/head";
-import Image from "next/image";
 import styles from "@/styles/Home.module.scss";
-import Link from "next/link";
 import { Poppins } from "next/font/google";
+import axios from "axios";
 
 const poppins = Poppins({ subsets: ["latin"], weight: ["400", "700"] });
 
 export default function Home() {
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const { data } = await axios.post(
+      "/api/submit",
+      document.querySelector("#my-form"),
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+  };
   return (
     <>
       <Head>
@@ -17,58 +29,18 @@ export default function Home() {
       </Head>
       <div className={`${styles.page} ${poppins.className}`}>
         <main className={styles.main}>
-          <ol>
-            <li>
-              Get started by editing <code>pages/index.js</code>.
-            </li>
-            <li>Save and see your changes instantly.</li>
-          </ol>
+          <form onSubmit={handleSubmit} className={styles.form} id="my-form">
+            <div className={styles.formGroup}>
+              <label>Enter Email</label>
+              <input type="email" name="email" />
+            </div>
+            <div className={styles.formGroup}>
+              <label>Enter Password</label>
+              <input type="password" name="password" />
+            </div>
+            <button type="submit">Submit</button>
+          </form>
         </main>
-        <footer className={styles.footer}>
-          <a
-            href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              aria-hidden
-              src="https://nextjs.org/icons/file.svg"
-              alt="File icon"
-              width={16}
-              height={16}
-            />
-            Learn
-          </a>
-          <a
-            href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              aria-hidden
-              src="https://nextjs.org/icons/window.svg"
-              alt="Window icon"
-              width={16}
-              height={16}
-            />
-            Examples
-          </a>
-          <a
-            href="https://nextjs.org?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              aria-hidden
-              src="https://nextjs.org/icons/globe.svg"
-              alt="Globe icon"
-              width={16}
-              height={16}
-            />
-            Go to nextjs.org →
-          </a>
-          <Link href={"/test"}>Test</Link>
-        </footer>
       </div>
     </>
   );
