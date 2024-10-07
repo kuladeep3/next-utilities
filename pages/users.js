@@ -2,15 +2,13 @@ import { fetchUsers } from "@/utils/my-api";
 import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
 
-function Home() {
+function Users() {
   // Queries
   const { isLoading, data } = useQuery({
     queryKey: ["users"],
     queryFn: fetchUsers,
-    staleTime: 5000,
+    staleTime: 1000 * 60 * 5,
   });
-
-  console.log(data);
 
   if (isLoading) {
     return <p>Loading...</p>;
@@ -18,15 +16,15 @@ function Home() {
 
   return (
     <section>
-      <h1>Home page</h1>
+      <h1>Users page</h1>
       {data?.map((user) => (
         <div key={user?.id}>
           <span>{user?.id} </span>
           <span>{user?.name}</span>
         </div>
       ))}
-      <Link href="/users">Users</Link>
+      <Link href="/">Home</Link>
     </section>
   );
 }
-export default Home;
+export default Users;
