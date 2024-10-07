@@ -1,19 +1,21 @@
-import { fetchUsers } from "@/utils/my-api";
-import { useQuery } from "@tanstack/react-query";
+import useTime from "@/hooks/useTime";
+import useUsers from "@/hooks/useUsers";
 import Link from "next/link";
 
 function Home() {
-  // Queries
-  const { isLoading, data } = useQuery({
-    queryKey: ["users"],
-    queryFn: fetchUsers,
-    staleTime: 5000,
-  });
-
-  console.log(data);
+  const { data, isLoading, isError } = useUsers();
+  const {
+    data: timerData,
+    isLoading: timerLoading,
+    isFetching: timerFetching,
+  } = useTime();
 
   if (isLoading) {
     return <p>Loading...</p>;
+  }
+
+  if (isError) {
+    return <p>Something went wrong!</p>;
   }
 
   return (
@@ -25,7 +27,13 @@ function Home() {
           <span>{user?.name}</span>
         </div>
       ))}
+      {!timerLoading && (
+        <p>
+          {timerData?.time} {timerFetching ? "..." : ""}
+        </p>
+      )}
       <Link href="/users">Users</Link>
+      <Link href="/login">Login</Link>
     </section>
   );
 }
