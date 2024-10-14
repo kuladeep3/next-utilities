@@ -1,14 +1,7 @@
-import useTime from "@/hooks/useTime";
 import useUsers from "@/hooks/useUsers";
-import Link from "next/link";
 
 function Home() {
   const { data, isLoading, isError } = useUsers();
-  const {
-    data: timerData,
-    isLoading: timerLoading,
-    isFetching: timerFetching,
-  } = useTime();
 
   if (isLoading) {
     return <p>Loading...</p>;
@@ -27,13 +20,6 @@ function Home() {
           <span>{user?.name}</span>
         </div>
       ))}
-      {!timerLoading && (
-        <p>
-          {timerData?.time} {timerFetching ? "..." : ""}
-        </p>
-      )}
-      <Link href="/users">Users</Link>
-      <Link href="/login">Login</Link>
     </section>
   );
 }
