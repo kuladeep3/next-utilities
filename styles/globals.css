@@ -1,6 +1,8 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --header-background: #0a0a23;
+  --header-text-color: #fff;
 }
 
 html,
@@ -31,9 +33,15 @@ a {
   padding: 2rem 4rem;
 }
 
-.footer {
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background-color: var(--header-background);
+  color: var(--header-text-color);
+  margin-bottom: 1rem;
   ul {
-    margin-top: 2rem;
     list-style: none;
     display: flex;
     gap: 20px;

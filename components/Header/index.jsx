@@ -1,8 +1,8 @@
 import Link from "next/link";
 
-function Footer() {
+function Header() {
   return (
-    <footer className="footer">
+    <nav className="header">
       <ul>
         <li>
           <Link href="/">Home</Link>
@@ -17,8 +17,8 @@ function Footer() {
           <Link href="/parallel">Parallel</Link>
         </li>
       </ul>
-    </footer>
+    </nav>
   );
 }
 
-export default Footer;
+export default Header;

@@ -1,15 +1,19 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# React-query implementation with best practices as used in production applications
 
-## Getting Started
+---
 
-First, run the development server:
+### Use a Single Instance of the API Client
 
-```bash
-npm run dev
-```
+When your application interacts with either RESTful or GraphQL APIs, it is beneficial to use a single instance of the API client that has been pre-configured and can be reused throughout the application. For example, `utils/api_instance.js`
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Multiple google fonts in nextjs.
+### Define and Export Request Declarations
 
-## Deploy on Vercel
+Rather than declaring API requests on the fly, it is recommended to define and export them separately.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Declaring API requests in a structured manner can help maintain a clean and organized codebase as everything is colocated.
+Every API request declaration should consist of:
+
+- A fetcher function that calls an endpoint, using the API client instance
+- A hook that consumes the fetcher function that is built on top of libraries such as [react-query](https://tanstack.com/query), [swr](https://swr.vercel.app/), [apollo-client](https://www.apollographql.com/docs/react/), [urql](https://formidable.com/open-source/urql/), etc. to manage the data fetching and caching logic.
+
+This approach simplifies the tracking of defined endpoints available in the application. Additionally, typing the responses and inferring them further down the application enhances application type safety.

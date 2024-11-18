@@ -1,7 +1,7 @@
-import useUsers from "@/hooks/useUsers";
+import { useUsers } from "@/api/get-users";
 
 function Users() {
-  const { data, isLoading, isError } = useUsers();
+  const { data, isLoading, isError } = useUsers({ page: 0 });
 
   if (isLoading) {
     return <p>Loading...</p>;
@@ -14,10 +14,10 @@ function Users() {
   return (
     <section>
       <h1>Users page</h1>
-      {data?.map((user) => (
+      {data?.users?.map((user) => (
         <div key={user?.id}>
           <span>{user?.id} </span>
-          <span>{user?.name}</span>
+          <span>{user?.firstName}</span>
         </div>
       ))}
     </section>
