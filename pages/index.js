@@ -1,7 +1,7 @@
 import { useUsers } from "@/api/get-users";
 
 function Home() {
-  const { data, isLoading, isError } = useUsers({ page: 0 });
+  const { data, isLoading, isError } = useUsers();
 
   if (isLoading) {
     return <p>Loading...</p>;

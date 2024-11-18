@@ -1,9 +1,10 @@
 import { useUsers } from "@/api/get-users";
 
 function Users() {
-  const { data, isLoading, isError } = useUsers({ page: 0 });
+  const { data, isPending, isError } = useUsers();
+  console.log(data);
 
-  if (isLoading) {
+  if (isPending) {
     return <p>Loading...</p>;
   }
 
@@ -23,4 +24,5 @@ function Users() {
     </section>
   );
 }
+
 export default Users;
