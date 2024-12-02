@@ -2,7 +2,6 @@ import { useUsers } from "@/api/get-users";
 
 function Users() {
   const { data, isPending, isError } = useUsers();
-  console.log(data);
 
   if (isPending) {
     return <p>Loading...</p>;

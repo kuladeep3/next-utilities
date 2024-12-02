@@ -52,3 +52,83 @@ a {
   display: grid;
   grid-template-columns: 1fr 3fr;
 }
+
+.notesContainer {
+  padding: 0 1rem;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 3rem;
+}
+
+form {
+  margin-top: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  gap: 4px; /* Space between label and input */
+}
+
+.form-label {
+  font-size: 0.875rem; /* Equivalent to 14px */
+  font-weight: 500; /* Medium font weight */
+  color: #4a5568; /* Neutral gray */
+}
+
+.form-input {
+  width: 100%;
+  padding: 8px 12px; /* Vertical and horizontal padding */
+  font-size: 0.875rem; /* Equivalent to 14px */
+  border: 1px solid #cbd5e0; /* Light gray border */
+  border-radius: 4px; /* Rounded corners */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+  background-color: #fff; /* White background */
+  color: #2d3748; /* Dark gray text */
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #3182ce; /* Blue border on focus */
+  box-shadow: 0 0 0 2px rgba(49, 130, 206, 0.25); /* Blue focus ring */
+}
+
+.notesListContainer {
+  margin-top: 1rem;
+}
+
+.note {
+  background-color: #ffffff; /* White background */
+  border: 1px solid #e5e7eb; /* Light gray border */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06); /* Subtle shadow */
+  padding: 16px; /* Padding inside the card */
+  margin-bottom: 16px; /* Spacing between cards */
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Add hover effect */
+}
+
+.note:hover {
+  transform: translateY(-2px); /* Slightly lift the card on hover */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06); /* Enhance shadow on hover */
+}
+
+.note h2 {
+  font-size: 1.25rem; /* Slightly larger font size for title */
+  font-weight: 600; /* Bold title */
+  margin-bottom: 8px; /* Space below the title */
+  color: #1f2937; /* Dark gray for text */
+}
+
+.note p {
+  font-size: 1rem; /* Normal font size for description */
+  color: #4b5563; /* Medium gray for text */
+  line-height: 1.5; /* Better readability */
+}
+
+button {
+  min-width: 100px;
+  padding: 8px;
+  border: none;
+  cursor: pointer;
+}
