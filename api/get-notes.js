@@ -3,7 +3,7 @@ import { queryOptions, useQuery } from "@tanstack/react-query";
 const { default: instance } = require("@/utils/api_instance");
 
 export const getNotes = async () => {
-  return instance.get("http://localhost:3000/list/notes");
+  return instance.get("http://localhost:3000/notes");
 };
 
 export const getNotesQueryOptions = () => {

@@ -1,14 +1,14 @@
 import instance from "@/utils/api_instance";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-export const addNote = async (noteData) => {
-  return instance.post("http://localhost:3000/note", noteData);
+export const deleteNote = (noteId) => {
+  return instance.delete("http://localhost:3000/note", { data: { noteId } });
 };
 
-export const useAddNote = () => {
+export const useDeleteNote = () => {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: addNote,
+    mutationFn: deleteNote,
     onSuccess: () => {
       queryClient.invalidateQueries(["notes"]);
     },
